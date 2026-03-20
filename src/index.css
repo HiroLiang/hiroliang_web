@@ -1,4 +1,54 @@
-:root {
-    margin: 0;
-    padding: 0;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 10%;
+    --foreground: 36 30% 91%;
+    --card: 220 20% 10%;
+    --card-foreground: 36 30% 91%;
+    --popover: 220 20% 10%;
+    --popover-foreground: 36 30% 91%;
+    --primary: 28 72% 66%;
+    --primary-foreground: 24 20% 10%;
+    --secondary: 220 16% 14%;
+    --secondary-foreground: 36 30% 91%;
+    --muted: 220 16% 14%;
+    --muted-foreground: 35 14% 67%;
+    --accent: 28 72% 66%;
+    --accent-foreground: 24 20% 10%;
+    --destructive: 0 72% 52%;
+    --destructive-foreground: 36 30% 91%;
+    --border: 220 14% 22%;
+    --input: 220 14% 22%;
+    --ring: 28 72% 66%;
+    --radius: 0.9rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    background-image: linear-gradient(180deg, hsl(220 20% 10%) 0%, hsl(218 18% 12%) 55%, hsl(220 20% 10%) 100%);
+    font-family: 'Avenir Next', 'Helvetica Neue', 'Segoe UI', sans-serif;
+    line-height: 1.7;
+    min-width: 320px;
+    min-height: 100vh;
+    text-rendering: optimizeLegibility;
+  }
+
+  a {
+    @apply text-inherit no-underline;
+  }
+
+  #root {
+    min-height: 100vh;
+  }
 }
