@@ -19,15 +19,15 @@ export const zhTWMessages: MessageDictionary = {
       inputPlaceholder: 'try /profile',
       send: '送出',
       streaming: '串流輸出中…',
-      unknownCommand: '找不到這個指令，請試試 /profile、/github、/projects、/experiences 或 /clean。',
+      unknownCommand: '找不到這個指令，請試試 /profile、/github、/projects、/note 或 /clean。',
     },
     experience: {
       body1:
-        '我在 2023 年 12 月開始擔任 Backend Java Team Leader，之後也轉為 vendor 角色，持續參與大型銀行申辦系統的開發與架構規劃。',
+        '隨著 AI 逐步成熟，我不太認同「AI 會讓 Junior 沒工作」這種說法。比較貼近的現實是，工作的內容正在被重新定義。就像自動化機械取代傳統金工一樣，Junior 不再只是學怎麼做，而是要更早學會操作系統、調整參數、理解問題發生的原因，甚至做基本的維修與優化。某種程度上，這其實是在提早接觸過去屬於 Senior 的能力；而那些完全依賴手工、不與系統互動的技能，在規模化的環境裡，生存空間只會越來越小。',
       body2:
-        '目前的工作涵蓋全端平台交付、面向客戶的行動產品後端能力、部署流程設計，以及提供開發與 QA 團隊使用的內部工具。',
-      eyebrow: '經歷',
-      title: '專注於金融系統中的後端、架構與交付。',
+        'AI 讓很多原本需要長時間累積的能力，變得更容易取得。資訊與技術的不對等正在被拉平，但這並不代表競爭變簡單，反而更困難。因為真正的差異開始轉向：能不能快速理解不同領域的問題、能不能把 AI 當作工具而不是依賴、能不能在不熟悉的領域中快速建立可用的解法。單一技術，或單一角色能力，已經不再是穩定的優勢。我目前在刻意培養的是一種跨領域的理解力，不只是軟體工程本身，而是延伸到系統與平台設計、使用者體驗、產品思維，以及設計、內容、商業與市場。目標不是什麼都精通，而是在需要的時候，能夠快速理解、快速上手，並做出可用的東西。',
+      eyebrow: '隨筆',
+      title: '一些在做系統之外的思考',
     },
     featured: {
       body: '這是一個以桌面使用情境為主的聊天應用作品頁，會依照你的裝置自動提供對應的 macOS 或 Windows 下載連結。',
@@ -36,25 +36,25 @@ export const zhTWMessages: MessageDictionary = {
       title: 'Tentserv Chat',
     },
     hero: {
-      eyebrow: '軟體工程師 • 組態管理',
+      eyebrow: '軟體工程師・系統架構師',
       github: 'GitHub',
       intro:
-        '我從 2023 年開始投入軟體工程，之後快速延伸到後端領導、組態管理與大型銀行應用系統的架構工作。',
+        '從銀行後端開發出發，逐步走向系統架構與技術決策，過程中也累積了對穩定性、可演進性與交付風險的實務理解。',
       localVisits: '本機造訪次數',
-      title: '打造穩定系統與實用工具。',
+      title: '設計能長期運作的系統，打造能被團隊維護的軟體。',
       viewProject: '查看作品',
     },
     summary:
-      '我關注的是程式流程如何真正運作、如何降低交付風險，以及如何設計出能在真實生產環境中持續穩定運作的系統。我喜歡打造讓團隊容易理解、容易維護，也能持續擴充的軟體。',
+      '我在意的是系統在壓力下的行為、在錯誤發生時的可控性，以及在持續變更下是否仍能保持結構清晰。比起追求複雜的設計，我更傾向用簡單且可驗證的方式解決問題，讓系統可以被團隊長期理解、維護與演進。',
     technical: {
-      body: '主要經驗集中在 Java、Spring Boot、JBoss、Docker、OpenShift、Angular 與 Vue；同時也持續透過 side project 與研究探索 React、Go、Rust、Tauri、Ollama 與本地 AI 工具鏈。',
-      eyebrow: '技術重點',
-      title: '核心技術堆疊與持續探索。',
+      body: '我持續關注長期可演進的系統架構設計、服務穩定性與 failure modes 分析、部署與交付風險控制，以及系統可觀測性與複雜系統的簡化整理。技術上主要使用 Java、Go、Rust、Docker、GCP、JBoss、Angular、Vue、React，也持續投入 Tauri、Ollama 與本地 AI 工具鏈的實作與探索。',
+      eyebrow: '技術方向',
+      title: '關注系統演進、可靠性與結構清晰度。',
     },
     panels: {
       experiences: {
-        description: '聚焦銀行系統中的交付經驗、架構責任與平台推進。',
-        title: '經歷',
+        description: '除了做系統與架構，我也持續在想，技術到底怎麼改變人工作的方式。',
+        title: '隨筆',
       },
       github: {
         body: 'GitHub 會放我持續整理的實驗作品、桌面工具與這個作品站相關開發方向。',
@@ -63,7 +63,7 @@ export const zhTWMessages: MessageDictionary = {
         title: 'GitHub',
       },
       profile: {
-        body: '把首頁、摘要與技術重點整合成一個可由指令呼叫的個人介紹區塊。',
+        body: '我關注的不只是把功能做出來，而是系統在真實世界裡如何長期運作。',
         skillsLabel: '核心工具',
         title: '個人介紹',
       },

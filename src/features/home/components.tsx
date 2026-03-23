@@ -67,6 +67,11 @@ export function ProfilePanel() {
 
 export function ExperiencesPanel() {
   const t = useMessages()
+  const notes = [
+    t.home.panels.experiences.description,
+    t.home.experience.body1,
+    t.home.experience.body2,
+  ]
 
   return (
     <SectionShell>
@@ -76,9 +81,20 @@ export function ExperiencesPanel() {
       <h2 className="text-3xl font-semibold leading-tight tracking-[-0.02em] text-foreground">
         {t.home.experience.title}
       </h2>
-      <p className="text-base leading-8 text-muted-foreground">{t.home.panels.experiences.description}</p>
-      <p className="text-base leading-8 text-muted-foreground">{t.home.experience.body1}</p>
-      <p className="text-base leading-8 text-muted-foreground">{t.home.experience.body2}</p>
+
+      <div className="space-y-4 pt-2">
+        {notes.map((note, index) => (
+          <div
+            key={`${t.home.experience.eyebrow}-${index}`}
+            className={[
+              'rounded-[1.2rem] bg-background/25 px-4 py-4',
+              index === 0 ? 'border border-border/60' : 'border border-border/45',
+            ].join(' ')}
+          >
+            <p className="text-base leading-8 text-muted-foreground whitespace-pre-wrap">{note}</p>
+          </div>
+        ))}
+      </div>
     </SectionShell>
   )
 }
@@ -328,7 +344,7 @@ export function HomePanelContent({ panel, resetToken = 0 }: { panel: HomePanelTy
       return <GithubPanel />
     case 'projects':
       return <ProjectsPanel resetToken={resetToken} />
-    case 'experiences':
+    case 'note':
       return <ExperiencesPanel />
     default:
       return null

@@ -19,15 +19,15 @@ export const enMessages: MessageDictionary = {
       inputPlaceholder: 'try /profile',
       send: 'Send',
       streaming: 'Streaming…',
-      unknownCommand: 'Unknown command. Try /profile, /github, /projects, /experiences, or /clean.',
+      unknownCommand: 'Unknown command. Try /profile, /github, /projects, /note, or /clean.',
     },
     experience: {
       body1:
-        'In December 2023, I stepped into a Backend Java Team Leader role and later transitioned into a vendor position, where I support the development and architecture of a major bank application system.',
+        'As AI continues to evolve, I do not fully agree with the idea that it will simply eliminate junior roles. What feels closer to reality is that the nature of work itself is being redefined. Just as automation replaced traditional craftsmanship, junior engineers are no longer only learning how to build, but are also expected much earlier to operate systems, tune parameters, understand why failures happen, and handle basic maintenance and optimization. In many ways, this means earlier exposure to abilities that used to belong more clearly to senior roles; meanwhile, purely manual skills that do not interact with systems will have less and less space in scalable environments.',
       body2:
-        'That work has included full-stack platform delivery, backend capabilities for customer-facing mobile products, deployment design, and internal tooling for both developers and QA teams.',
-      eyebrow: 'Experience',
-      title: 'Backend, architecture, and delivery in financial systems.',
+        'AI makes many capabilities that once took years to accumulate much more accessible. The gap in information and technical skill is shrinking, but that does not make competition easier; if anything, it raises the bar. The real differentiator is shifting toward the ability to understand problems across domains, to use AI as a tool rather than a crutch, and to build workable solutions in unfamiliar areas. A single language, or a single narrowly defined role, no longer feels like a durable advantage. What I am intentionally developing instead is cross-domain understanding, extending beyond software engineering itself into system and platform design, user experience, product thinking, and even design, content, business, and market awareness. The goal is not to master everything, but to quickly understand, adapt, and build something usable when needed.',
+      eyebrow: 'Notes',
+      title: 'Thoughts Beyond Building Systems',
     },
     featured: {
       body: 'A desktop-focused chat project built for practical use. The project page detects your device and gives you the right download link for macOS or Windows.',
@@ -36,25 +36,25 @@ export const enMessages: MessageDictionary = {
       title: 'Tentserv Chat',
     },
     hero: {
-      eyebrow: 'Software Engineer • Configuration Manager',
+      eyebrow: 'Software Engineer · System Architect',
       github: 'GitHub',
       intro:
-        'I started my software engineering journey in 2023 and moved quickly into backend leadership, configuration management, and architecture work for major banking application systems.',
+        'I started in backend engineering for banking systems and gradually moved into system architecture and technical decision-making, building practical experience in stability, evolvability, and delivery risk.',
       localVisits: 'Local Visits',
-      title: 'Building stable systems and practical tools.',
+      title: 'Designing systems that last and software teams can maintain.',
       viewProject: 'View Project',
     },
     summary:
-      'My work is centered on understanding program flow, reducing delivery risk, and designing systems that stay realistic under production pressure. I enjoy building software that teams can reason about, operate with confidence, and continue to extend over time.',
+      'I care about how systems behave under pressure, how controllable they remain when failures occur, and whether their structure stays clear as they continue to evolve. Rather than pursuing complex designs, I prefer simple and verifiable solutions that teams can understand, maintain, and extend over the long term.',
     technical: {
-      body: 'My main experience is in Java, Spring Boot, JBoss, Docker, OpenShift, Angular, and Vue. Alongside that, I actively explore React, Go, Rust, Tauri, Ollama, and local AI tooling through side projects and research.',
-      eyebrow: 'Technical Focus',
-      title: 'Core stack with room for exploration.',
+      body: 'My technical focus includes long-term system architecture, service reliability and failure mode analysis, deployment and delivery risk management, observability, and simplifying complex systems into structures that remain workable over time. My stack spans Java, Go, Rust, Docker, GCP, JBoss, Angular, Vue, and React, with continued exploration in Tauri, Ollama, and local AI tooling.',
+      eyebrow: 'Areas of Focus',
+      title: 'Focused on evolvable architecture, reliability, and clear structure.',
     },
     panels: {
       experiences: {
-        description: 'Delivery experience, architecture ownership, and platform execution across banking systems.',
-        title: 'Experiences',
+        description: 'Beyond building systems and architecture, I keep thinking about how technology changes the way people work.',
+        title: 'Notes',
       },
       github: {
         body: 'GitHub is where I publish experiments, desktop tooling, and the work that supports this portfolio direction.',
@@ -63,7 +63,7 @@ export const enMessages: MessageDictionary = {
         title: 'GitHub',
       },
       profile: {
-        body: 'A concise profile view that combines the hero, summary, and technical focus into one command-driven panel.',
+        body: 'I focus not only on building features, but on how systems behave and survive in real-world production over time.',
         skillsLabel: 'Core tools',
         title: 'Profile',
       },
