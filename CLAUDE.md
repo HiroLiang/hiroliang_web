@@ -19,6 +19,9 @@ Copy `.env.example` to `.env.local` and set:
 
 ```
 VITE_API_BASE_URL=   # Backend API base URL
+VITE_CHAT_STREAM_URL=   # Full SSE chat endpoint used by homepage chat
+VITE_CHAT_API_KEY=   # Header value for X-Chat-Api-Key
+VITE_CHAT_MODEL=   # Default model passed to the SSE chat endpoint
 ```
 
 ## Architecture
@@ -31,7 +34,7 @@ VITE_API_BASE_URL=   # Backend API base URL
 
 **i18n:** Custom solution — no external i18n library. `MessageDictionary` type (`src/locales/types.ts`) is the source of truth for all translatable strings. Add new locales in `src/locales/`, register them in `src/locales/index.ts`. Use `useMessages()` in components to get typed strings for the current locale.
 
-**API:** `src/lib/axios.ts` exports `apiClient` (Axios instance) and a typed `request<TResponse>()` wrapper. Base URL from `VITE_API_BASE_URL`.
+**API:** `src/lib/axios.ts` exports `apiClient` (Axios instance) and a typed `request<TResponse>()` wrapper. Base URL from `VITE_API_BASE_URL`. Homepage chat streaming is handled separately in `src/features/home/api.ts` via `fetch` + SSE using `VITE_CHAT_STREAM_URL`, `VITE_CHAT_API_KEY`, and `VITE_CHAT_MODEL`.
 
 **UI components:** shadcn/ui pattern — components in `src/components/ui/` are copied/adapted from shadcn, built on Radix UI primitives + Tailwind + `class-variance-authority`.
 

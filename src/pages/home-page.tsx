@@ -1,7 +1,7 @@
 import { type FormEvent, type KeyboardEvent, useEffect, useMemo, useRef, useState } from 'react'
 
 import { Button } from '@/components/ui/button'
-import { streamChatReply } from '@/features/home/api'
+import { createChatStreamRequest, streamChatReply } from '@/features/home/api'
 import { HOME_COMMANDS, formatHomeCommand } from '@/features/home/commands'
 import { HomePanelContent } from '@/features/home/components'
 import type { ChatMessage, HomeCommand, HomePanelType, PanelPhase } from '@/features/home/types'
@@ -72,6 +72,8 @@ export function HomePage() {
   const [highlightedCommandIndex, setHighlightedCommandIndex] = useState(0)
   const timeoutRef = useRef<number | null>(null)
   const scrollViewportRef = useRef<HTMLDivElement | null>(null)
+  const sessionIdRef = useRef(crypto.randomUUID())
+  const isComposingRef = useRef(false)
   const textareaRef = useRef<HTMLTextAreaElement | null>(null)
 
   const filteredCommands = useMemo(() => {
@@ -280,9 +282,11 @@ export function HomePage() {
 
     try {
       let hasReply = false
+      let lastReply = ''
 
-      for await (const partial of streamChatReply({ message: content })) {
+      for await (const partial of streamChatReply(createChatStreamRequest(content, sessionIdRef.current))) {
         hasReply = true
+        lastReply = partial
         setMessages((current) =>
           current.map((message) =>
             message.id === assistantMessage.id
@@ -301,13 +305,14 @@ export function HomePage() {
           message.id === assistantMessage.id
             ? {
                 ...message,
-                content: hasReply ? message.content : t.home.chat.errorFallback,
+                content: hasReply ? lastReply : t.home.chat.errorFallback,
                 status: hasReply ? 'idle' : 'error',
               }
             : message,
         ),
       )
-    } catch {
+    } catch (error) {
+      console.error('Homepage chat stream failed:', error)
       setMessages((current) =>
         current.map((message) =>
           message.id === assistantMessage.id
@@ -361,6 +366,14 @@ export function HomePage() {
   }
 
   async function handleTextareaKeyDown(event: KeyboardEvent<HTMLTextAreaElement>) {
+    if (
+      event.nativeEvent.isComposing ||
+      isComposingRef.current ||
+      ('keyCode' in event && event.keyCode === 229)
+    ) {
+      return
+    }
+
     if (event.key === 'ArrowDown' && isCommandMenuOpen) {
       event.preventDefault()
       setHighlightedCommandIndex((current) => (current + 1) % filteredCommands.length)
@@ -477,6 +490,12 @@ export function HomePage() {
                 onChange={(event) => {
                   setInputValue(event.target.value)
                   setIsCommandMenuDismissed(false)
+                }}
+                onCompositionEnd={() => {
+                  isComposingRef.current = false
+                }}
+                onCompositionStart={() => {
+                  isComposingRef.current = true
                 }}
                 onKeyDown={handleTextareaKeyDown}
                 placeholder={isAnyStreaming ? streamingComposerText : t.home.chat.inputPlaceholder}
