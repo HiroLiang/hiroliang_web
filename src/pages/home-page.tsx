@@ -263,14 +263,18 @@ export function HomePage() {
     setHighlightedCommandIndex(0)
   }
 
+  function focusComposer() {
+    window.requestAnimationFrame(() => {
+      textareaRef.current?.focus()
+    })
+  }
+
   function applyCommandSelection(command: HomeCommand) {
     setInputValue(formatHomeCommand(command))
     setIsCommandMenuDismissed(true)
     setHighlightedCommandIndex(0)
 
-    window.requestAnimationFrame(() => {
-      textareaRef.current?.focus()
-    })
+    focusComposer()
   }
 
   async function sendMessage(content: string) {
@@ -326,6 +330,7 @@ export function HomePage() {
       )
     } finally {
       setIsStreaming(false)
+      focusComposer()
     }
   }
 
