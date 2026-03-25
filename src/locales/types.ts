@@ -55,6 +55,25 @@ export type MessageDictionary = {
         eyebrow: string
         title: string
       }
+      games: {
+        backToGames: string
+        description: string
+        entries: {
+          snake: {
+            description: string
+            title: string
+          }
+        }
+        eyebrow: string
+        snake: {
+          boardLabel: string
+          gameOver: string
+          gameOverHint: string
+          highScoreLabel: string
+          scoreLabel: string
+        }
+        title: string
+      }
       profile: {
         body: string
         skillsLabel: string

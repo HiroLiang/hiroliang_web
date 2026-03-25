@@ -27,3 +27,24 @@ export type ProjectEntry = {
   id: string
   supportsDownloads?: boolean
 }
+
+export type GameEntry = {
+  id: 'snake'
+}
+
+export type SnakeDirection = 'up' | 'down' | 'left' | 'right'
+
+export type SnakeCell = {
+  x: number
+  y: number
+}
+
+export type SnakeGameState = {
+  direction: SnakeDirection
+  food: SnakeCell
+  gridCount: number
+  score: number
+  snake: SnakeCell[]
+  speedMs: number
+  status: 'idle' | 'running' | 'game-over'
+}

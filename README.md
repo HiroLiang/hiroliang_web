@@ -2,6 +2,8 @@
 
 Personal portfolio site built with React, TypeScript, Vite, Tailwind CSS, and Zustand.
 
+Live site: [hiroliang.com](https://hiroliang.com)
+
 The site currently centers on two main experiences:
 
 - A chat-style homepage with slash-command panels such as `/profile`, `/github`, `/projects`, and `/note`

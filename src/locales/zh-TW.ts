@@ -19,7 +19,7 @@ export const zhTWMessages: MessageDictionary = {
       inputPlaceholder: 'try /profile',
       send: '送出',
       streaming: '串流輸出中…',
-      unknownCommand: '找不到這個指令，請試試 /profile、/github、/projects、/note 或 /clean。',
+      unknownCommand: '找不到這個指令，請試試 /profile、/github、/projects、/games、/note 或 /clean。',
     },
     experience: {
       body1:
@@ -61,6 +61,25 @@ export const zhTWMessages: MessageDictionary = {
         cta: 'GitHub',
         eyebrow: '外部連結',
         title: 'GitHub',
+      },
+      games: {
+        backToGames: '返回遊戲選單',
+        description: '放一些可以直接在網頁上玩的輕量小遊戲，先從簡單的像素版貪吃蛇開始。',
+        entries: {
+          snake: {
+            description: '經典貪吃蛇，小棋盤像素風格，每吃一顆豆子就再快一點，撞牆或撞到自己就結束。',
+            title: '貪吃蛇',
+          },
+        },
+        eyebrow: 'Mini Games',
+        snake: {
+          boardLabel: '貪吃蛇遊戲棋盤',
+          gameOver: '遊戲結束',
+          gameOverHint: '按方向鍵重新開始',
+          highScoreLabel: '最高分',
+          scoreLabel: '分數',
+        },
+        title: '遊戲',
       },
       profile: {
         body: '我關注的不只是把功能做出來，而是系統在真實世界裡如何長期運作。',

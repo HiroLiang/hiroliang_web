@@ -19,7 +19,7 @@ export const enMessages: MessageDictionary = {
       inputPlaceholder: 'try /profile',
       send: 'Send',
       streaming: 'Streaming…',
-      unknownCommand: 'Unknown command. Try /profile, /github, /projects, /note, or /clean.',
+      unknownCommand: 'Unknown command. Try /profile, /github, /projects, /games, /note, or /clean.',
     },
     experience: {
       body1:
@@ -61,6 +61,25 @@ export const enMessages: MessageDictionary = {
         cta: 'GitHub',
         eyebrow: 'External',
         title: 'GitHub',
+      },
+      games: {
+        backToGames: 'Back to games',
+        description: 'A small arcade corner for playful browser experiments. Starting with a simple pixel Snake.',
+        entries: {
+          snake: {
+            description: 'Classic Snake with a compact pixel board, faster speed on each snack, and game-over on wall or self collision.',
+            title: 'Snake',
+          },
+        },
+        eyebrow: 'Mini games',
+        snake: {
+          boardLabel: 'Snake game board',
+          gameOver: 'GAME OVER',
+          gameOverHint: 'Press any arrow key',
+          highScoreLabel: 'High score',
+          scoreLabel: 'Score',
+        },
+        title: 'Games',
       },
       profile: {
         body: 'I focus not only on building features, but on how systems behave and survive in real-world production over time.',

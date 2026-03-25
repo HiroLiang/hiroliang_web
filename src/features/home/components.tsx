@@ -2,6 +2,7 @@ import { type ReactNode, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { Button } from '@/components/ui/button'
+import { GamesPanel } from '@/features/home/games'
 import { useMessages } from '@/hooks/use-locale'
 import { useDetectedPlatform } from '@/features/project/use-detected-platform'
 import {
@@ -367,6 +368,8 @@ export function HomePanelContent({ panel, resetToken = 0 }: { panel: HomePanelTy
       return <GithubPanel />
     case 'projects':
       return <ProjectsPanel resetToken={resetToken} />
+    case 'games':
+      return <GamesPanel />
     case 'note':
       return <ExperiencesPanel />
     default:
