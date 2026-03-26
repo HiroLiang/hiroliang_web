@@ -6,6 +6,8 @@ import { HOME_COMMANDS, formatHomeCommand } from '@/features/home/commands'
 import { HomePanelContent } from '@/features/home/components'
 import type { ChatMessage, HomeCommand, HomePanelType, PanelPhase } from '@/features/home/types'
 import { useMessages } from '@/hooks/use-locale'
+import { marked } from 'marked'
+import DOMPurify from 'dompurify'
 
 const PANEL_TRANSITION_MS = 260
 const INTRO_MIN_STREAM_DELAY_MS = 12
@@ -43,6 +45,10 @@ function bubbleClassName(role: ChatMessage['role'], status: ChatMessage['status'
   }
 
   return 'mr-auto border border-border/70 bg-secondary/80 text-foreground'
+}
+
+function renderMarkdown(content: string): string {
+  return DOMPurify.sanitize(marked.parse(content) as string)
 }
 
 function getTypingDelay(character: string) {
@@ -472,9 +478,18 @@ export function HomePage() {
                   bubbleClassName(message.role, message.status),
                 ].join(' ')}
               >
-                <p className="whitespace-pre-wrap">
-                  {message.content || (message.status === 'streaming' ? t.home.chat.streaming : '')}
-                </p>
+                {message.role === 'assistant' && message.content ? (
+                    <div
+                        className="markdown-body prose prose-sm max-w-none"
+                        dangerouslySetInnerHTML={{
+                          __html: renderMarkdown(message.content)
+                        }}
+                    />
+                ) : (
+                    <p className="whitespace-pre-wrap">
+                      {message.content || (message.status === 'streaming' ? t.home.chat.streaming : '')}
+                    </p>
+                )}
               </div>
             ))}
 

@@ -15,7 +15,7 @@ export const zhTWMessages: MessageDictionary = {
   home: {
     chat: {
       errorFallback: '伺服器沒有回傳可顯示的內容。',
-      introMessage: 'Hi, my name is Hiro Liang. I am a software engineer building practical systems and tools.',
+      introMessage: 'Hi，這裡是 Hiro Liang 的網站， 一個熱衷建造系統的軟體工程師。',
       inputPlaceholder: 'try /profile',
       send: '送出',
       streaming: '串流輸出中…',

@@ -15,7 +15,7 @@ export const enMessages: MessageDictionary = {
   home: {
     chat: {
       errorFallback: 'The server did not return a usable reply.',
-      introMessage: "Hi, my name is Hiro Liang. I'm a software engineer building practical systems and tools.",
+      introMessage: "Hi, my name is Hiro Liang. A software engineer building practical systems and tools.",
       inputPlaceholder: 'try /profile',
       send: 'Send',
       streaming: 'Streaming…',

@@ -129,7 +129,7 @@ export function AppLayout() {
             'z-50 border-border/70 bg-background/92 backdrop-blur transition-transform duration-200 ease-out',
             isMobileViewport
               ? `fixed top-0 flex items-center justify-between gap-3 rounded-b-2xl border border-t-0 px-3 py-3 ${headerVisibilityClass}`
-              : 'mb-4 flex flex-col gap-4 border-b pb-4 sm:flex-row sm:items-center sm:justify-between',
+              : 'mt-4  mb-4 flex flex-col gap-4 border-b pb-4 sm:flex-row sm:items-center sm:justify-between',
           ].join(' ')}
           style={isMobileViewport ? { left: `${MOBILE_HEADER_SIDE_INSET_PX}px`, right: `${MOBILE_HEADER_SIDE_INSET_PX}px` } : undefined}
         >
