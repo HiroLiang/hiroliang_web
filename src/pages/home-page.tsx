@@ -2,6 +2,7 @@ import { type FormEvent, type KeyboardEvent, useEffect, useMemo, useRef, useStat
 
 import { Button } from '@/components/ui/button'
 import { createChatStreamRequest, streamChatReply } from '@/features/home/api'
+import { CHAT_BUBBLE_BASE_CLASS_NAME, getChatBubbleClassName } from '@/features/home/chat-bubbles'
 import { HOME_COMMANDS, formatHomeCommand } from '@/features/home/commands'
 import { HomePanelContent } from '@/features/home/components'
 import type { ChatMessage, HomeCommand, HomePanelType, PanelPhase } from '@/features/home/types'
@@ -33,18 +34,6 @@ function getCommand(input: string): HomeCommand | null {
   const command = firstToken.slice(1)
 
   return HOME_COMMANDS.find((item) => item === command) ?? null
-}
-
-function bubbleClassName(role: ChatMessage['role'], status: ChatMessage['status']) {
-  if (role === 'user') {
-    return 'ml-auto border border-accent/40 bg-accent/90 text-accent-foreground'
-  }
-
-  if (status === 'error') {
-    return 'mr-auto border border-destructive/40 bg-destructive/10 text-foreground'
-  }
-
-  return 'mr-auto border border-border/70 bg-secondary/80 text-foreground'
 }
 
 function renderMarkdown(content: string): string {
@@ -463,7 +452,7 @@ export function HomePage() {
 
   return (
     <section className="flex min-h-0 flex-1 overflow-hidden">
-      <div className="crt-shell flex h-full min-h-0 w-full flex-1 flex-col overflow-hidden rounded-[2rem] border border-border/80 bg-[linear-gradient(180deg,rgba(18,28,14,0.94)_0%,rgba(10,22,12,0.96)_100%)] shadow-[0_30px_120px_rgba(0,0,0,0.42)]">
+      <div className="app-chat-shell crt-shell flex h-full min-h-0 w-full flex-1 flex-col overflow-hidden rounded-[2rem] border border-border/80">
         <div
           className="hide-scrollbar min-h-0 flex-1 overflow-y-auto px-4 py-4 sm:px-5 sm:py-5"
           data-app-scroll-root="true"
@@ -474,8 +463,8 @@ export function HomePage() {
               <div
                 key={message.id}
                 className={[
-                  'max-w-[88%] rounded-[1.35rem] px-4 py-3 text-sm leading-7 shadow-[0_10px_40px_rgba(0,0,0,0.28)]',
-                  bubbleClassName(message.role, message.status),
+                  CHAT_BUBBLE_BASE_CLASS_NAME,
+                  getChatBubbleClassName(message.role, message.status),
                 ].join(' ')}
               >
                 {message.role === 'assistant' && message.content ? (
@@ -511,7 +500,7 @@ export function HomePage() {
         <form className="border-t border-border/70 px-4 py-4 sm:px-5" onSubmit={handleSubmit}>
           <div className="relative">
             {isCommandMenuOpen ? (
-              <div className="absolute inset-x-0 bottom-[calc(100%+0.75rem)] rounded-[1.4rem] border border-border/80 bg-background/95 p-2 shadow-[0_18px_60px_rgba(0,0,0,0.42)] backdrop-blur">
+              <div className="app-command-menu absolute inset-x-0 bottom-[calc(100%+0.75rem)] rounded-[1.4rem] border border-border/80 bg-background/95 p-2 shadow-[0_18px_60px_rgba(0,0,0,0.42)] backdrop-blur">
                 <div className="space-y-1">
                   {filteredCommands.map((command, index) => {
                     const isHighlighted = index === highlightedCommandIndex
@@ -543,7 +532,7 @@ export function HomePage() {
               </div>
             ) : null}
 
-            <div className="flex items-end gap-3 rounded-[1.5rem] border border-border/70 bg-secondary/65 p-3">
+            <div className="app-composer-shell flex items-end gap-3 rounded-[1.5rem] border border-border/70 bg-secondary/65 p-3">
               <textarea
                 ref={textareaRef}
                 className="min-h-24 flex-1 resize-none rounded-[1.2rem] border border-border/70 bg-background/50 px-4 py-3 text-sm text-foreground outline-none transition focus:border-accent focus:ring-1 focus:ring-accent"

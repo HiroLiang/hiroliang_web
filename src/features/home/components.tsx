@@ -2,6 +2,7 @@ import { type ReactNode, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { Button } from '@/components/ui/button'
+import { CHAT_BUBBLE_BASE_CLASS_NAME, getChatBubbleClassName } from '@/features/home/chat-bubbles'
 import { GamesPanel } from '@/features/home/games'
 import { useMessages } from '@/hooks/use-locale'
 import { useDetectedPlatform } from '@/features/project/use-detected-platform'
@@ -25,7 +26,7 @@ function SectionShell({
   return (
     <section
       className={[
-        'space-y-4 rounded-[1.6rem] border border-border/80 bg-secondary/45 p-5 shadow-[0_16px_60px_rgba(0,0,0,0.2)] sm:p-6',
+        'app-panel-shell space-y-4 rounded-[1.6rem] border border-border/80 bg-secondary/45 p-5 shadow-[0_16px_60px_rgba(0,0,0,0.2)] sm:p-6',
         className,
       ].join(' ')}
     >
@@ -68,11 +69,7 @@ export function ProfilePanel() {
 
 export function ExperiencesPanel() {
   const t = useMessages()
-  const notes = [
-    t.home.panels.experiences.description,
-    t.home.experience.body1,
-    t.home.experience.body2,
-  ]
+  const notes = t.home.experience.notes
 
   return (
     <SectionShell>
@@ -82,17 +79,19 @@ export function ExperiencesPanel() {
       <h2 className="text-3xl font-semibold leading-tight tracking-[-0.02em] text-foreground">
         {t.home.experience.title}
       </h2>
+      <p className="text-base leading-8 text-muted-foreground">{t.home.panels.experiences.description}</p>
 
       <div className="space-y-4 pt-2">
         {notes.map((note, index) => (
           <div
-            key={`${t.home.experience.eyebrow}-${index}`}
+            key={`${t.home.experience.eyebrow}-${note.date}-${index}`}
             className={[
-              'rounded-[1.2rem] bg-background/25 px-4 py-4',
-              index === 0 ? 'border border-border/60' : 'border border-border/45',
+              CHAT_BUBBLE_BASE_CLASS_NAME,
+              getChatBubbleClassName('assistant'),
             ].join(' ')}
           >
-            <p className="text-base leading-8 text-muted-foreground whitespace-pre-wrap">{note}</p>
+            <p className="text-xs font-semibold tracking-[0.18em] text-accent">{note.date}</p>
+            <p className="pt-2 text-base leading-8 whitespace-pre-wrap">{note.body}</p>
           </div>
         ))}
       </div>

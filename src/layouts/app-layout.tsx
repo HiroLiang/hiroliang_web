@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
 
 import { useLocale, useMessages } from '@/hooks/use-locale'
+import { useTheme } from '@/hooks/use-theme'
+import type { ThemeMode } from '@/lib/theme'
 import type { Locale } from '@/locales/types'
 import {
   Select,
@@ -14,10 +16,10 @@ import {
 const MOBILE_BREAKPOINT_QUERY = '(max-width: 639px)'
 const MOBILE_HEADER_SHOW_DELTA_PX = 24
 const MOBILE_HEADER_HIDE_DELTA_PX = 10
-const MOBILE_HEADER_SIDE_INSET_PX = 2.3
 
 export function AppLayout() {
   const { locale, setLocale } = useLocale()
+  const { themeMode, setThemeMode } = useTheme()
   const t = useMessages()
   const location = useLocation()
   const [isMobileViewport, setIsMobileViewport] = useState(false)
@@ -121,17 +123,16 @@ export function AppLayout() {
   return (
     <div className="h-screen overflow-hidden bg-background text-foreground">
       <div
-        className="flex h-screen w-full flex-col overflow-hidden px-3 pb-3 pt-0 sm:px-5 sm:pb-4 sm:pt-4 lg:px-6"
+        className="flex h-screen w-full flex-col overflow-hidden pt-0"
         style={{ paddingTop: mobileMainTopPadding }}
       >
         <header
           className={[
-            'z-50 border-border/70 bg-background/92 backdrop-blur transition-transform duration-200 ease-out',
+            'app-navbar z-50 border-border/70 bg-background/92 backdrop-blur transition-transform duration-200 ease-out',
             isMobileViewport
-              ? `fixed top-0 flex items-center justify-between gap-3 rounded-b-2xl border border-t-0 px-3 py-3 ${headerVisibilityClass}`
-              : 'mt-4  mb-4 flex flex-col gap-4 border-b pb-4 sm:flex-row sm:items-center sm:justify-between',
+              ? `fixed inset-x-0 top-0 w-full flex items-center justify-between gap-3 rounded-b-2xl border border-t-0 px-3 py-3 ${headerVisibilityClass}`
+              : 'mb-3 flex flex-col gap-4 rounded-b-2xl border border-t-0 px-3 py-3 sm:mb-4 sm:flex-row sm:items-center sm:justify-between sm:px-5 lg:px-6',
           ].join(' ')}
-          style={isMobileViewport ? { left: `${MOBILE_HEADER_SIDE_INSET_PX}px`, right: `${MOBILE_HEADER_SIDE_INSET_PX}px` } : undefined}
         >
           <NavLink
             className="flex min-w-0 shrink items-baseline gap-x-3 gap-y-1 whitespace-nowrap"
@@ -142,7 +143,7 @@ export function AppLayout() {
             </span>
           </NavLink>
 
-          <div className="flex shrink-0 items-center gap-3 sm:gap-4">
+          <div className="flex shrink-0 items-center gap-2 sm:gap-4">
             <nav className="flex shrink-0 flex-row gap-3 whitespace-nowrap text-xs sm:gap-5 sm:text-sm">
               <a
                 className="text-muted-foreground transition-colors duration-150 hover:text-foreground"
@@ -154,21 +155,41 @@ export function AppLayout() {
               </a>
             </nav>
 
-            <div className="w-[104px] shrink-0 sm:w-[120px]">
+            <div className="w-[84px] shrink-0 sm:w-[120px]">
               <Select onValueChange={(value) => setLocale(value as Locale)} value={locale}>
-                <SelectTrigger aria-label={t.nav.language} className="h-9 bg-transparent px-2 text-xs sm:text-sm">
+                <SelectTrigger
+                  aria-label={t.nav.language}
+                  className="app-navbar-select-trigger h-9 bg-transparent px-2 text-xs sm:text-sm"
+                >
                   <SelectValue placeholder={t.localeLabel} />
                 </SelectTrigger>
-                <SelectContent align="end">
+                <SelectContent align="end" className="app-navbar-select-content">
                   <SelectItem value="en">{t.locales.en}</SelectItem>
+                  <SelectItem value="ja">{t.locales.ja}</SelectItem>
                   <SelectItem value="zh-TW">{t.locales['zh-TW']}</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div className="w-[84px] shrink-0 sm:w-[120px]">
+              <Select onValueChange={(value) => setThemeMode(value as ThemeMode)} value={themeMode}>
+                <SelectTrigger
+                  aria-label={t.nav.theme}
+                  className="app-navbar-select-trigger h-9 bg-transparent px-2 text-xs sm:text-sm"
+                >
+                  <SelectValue placeholder={t.nav.theme} />
+                </SelectTrigger>
+                <SelectContent align="end" className="app-navbar-select-content">
+                  <SelectItem value="dark">{t.themeModes.dark}</SelectItem>
+                  <SelectItem value="bright">{t.themeModes.bright}</SelectItem>
+                  <SelectItem value="auto">{t.themeModes.auto}</SelectItem>
                 </SelectContent>
               </Select>
             </div>
           </div>
         </header>
 
-        <main className="flex min-h-0 flex-1 overflow-hidden">
+        <main className="flex min-h-0 flex-1 overflow-hidden px-3 pb-3 sm:px-5 sm:pb-4 lg:px-6">
           <Outlet />
         </main>
       </div>

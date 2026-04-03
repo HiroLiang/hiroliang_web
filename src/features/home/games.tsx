@@ -15,7 +15,7 @@ export function GamesPanel() {
   return (
     <div className="min-h-0 space-y-4">
       {!selectedGameId ? (
-        <section className="space-y-4 rounded-[1.6rem] border border-border/80 bg-secondary/45 p-5 shadow-[0_16px_60px_rgba(0,0,0,0.2)] sm:p-6">
+        <section className="app-panel-shell space-y-4 rounded-[1.6rem] border border-border/80 bg-secondary/45 p-5 shadow-[0_16px_60px_rgba(0,0,0,0.2)] sm:p-6">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">
             {t.home.panels.games.eyebrow}
           </p>
@@ -50,7 +50,7 @@ export function GamesPanel() {
             </Button>
           </div>
 
-          <section className="flex h-[min(72vh,48rem)] min-h-[22rem] flex-col overflow-hidden rounded-[1.6rem] border border-border/80 bg-secondary/45 p-3 shadow-[0_16px_60px_rgba(0,0,0,0.2)] sm:p-4">
+          <section className="app-panel-shell flex h-[min(72vh,48rem)] min-h-[22rem] flex-col overflow-hidden rounded-[1.6rem] border border-border/80 bg-secondary/45 p-3 shadow-[0_16px_60px_rgba(0,0,0,0.2)] sm:p-4">
             <SnakeGame />
           </section>
         </div>
@@ -64,7 +64,7 @@ export function GamesPanel() {
             </Button>
           </div>
 
-          <section className="flex h-[min(78vh,52rem)] min-h-[24rem] flex-col overflow-hidden rounded-[1.6rem] border border-border/80 bg-secondary/45 p-1 shadow-[0_16px_60px_rgba(0,0,0,0.2)] sm:p-4">
+          <section className="app-panel-shell flex h-[min(78vh,52rem)] min-h-[24rem] flex-col overflow-hidden rounded-[1.6rem] border border-border/80 bg-secondary/45 p-1 shadow-[0_16px_60px_rgba(0,0,0,0.2)] sm:p-4">
             <GomokuGame />
           </section>
         </div>

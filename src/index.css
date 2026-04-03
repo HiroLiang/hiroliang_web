@@ -53,6 +53,28 @@
     --font-family-app: var(--font-family-default);
   }
 
+  :root[data-theme='bright'] {
+    --background: 212 24% 88%;
+    --foreground: 218 16% 20%;
+    --card: 210 25% 99%;
+    --card-foreground: 218 15% 14%;
+    --popover: 210 25% 98%;
+    --popover-foreground: 218 15% 16%;
+    --primary: 213 43% 40%;
+    --primary-foreground: 210 34% 98%;
+    --secondary: 211 21% 93%;
+    --secondary-foreground: 216 14% 24%;
+    --muted: 212 18% 91%;
+    --muted-foreground: 217 11% 40%;
+    --accent: 213 43% 40%;
+    --accent-foreground: 210 34% 98%;
+    --destructive: 5 55% 46%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 212 18% 71%;
+    --input: 212 18% 71%;
+    --ring: 213 43% 40%;
+  }
+
   :root[data-use-custom-font='true'] {
     --font-family-app: var(--font-family-custom);
   }
@@ -76,6 +98,12 @@
     min-height: 100vh;
     overflow: hidden;
     text-rendering: optimizeLegibility;
+  }
+
+  :root[data-theme='bright'] body {
+    background-image:
+      radial-gradient(circle at top, hsl(207 32% 74% / 0.3), transparent 38%),
+      linear-gradient(180deg, hsl(211 30% 88%) 0%, hsl(212 26% 86%) 56%, hsl(214 20% 82%) 100%);
   }
 
   a {
@@ -132,5 +160,78 @@
   .crt-shell > * {
     position: relative;
     z-index: 1;
+  }
+
+  .app-chat-shell {
+    background-image: linear-gradient(180deg, rgba(18, 28, 14, 0.94) 0%, rgba(10, 22, 12, 0.96) 100%);
+    box-shadow: 0 30px 120px rgba(0, 0, 0, 0.42);
+  }
+
+  :root[data-theme='bright'] .app-navbar {
+    background-color: hsl(213 24% 70% / 0.96);
+    border-color: hsl(212 24% 56% / 0.86);
+    box-shadow: 0 9px 22px hsl(214 28% 30% / 0.16);
+  }
+
+  :root[data-theme='bright'] .app-navbar .app-navbar-select-trigger {
+    background-color: hsl(214 22% 72% / 0.28);
+    border-color: hsl(214 30% 46% / 0.9);
+    box-shadow:
+      inset 0 0 0 1px hsl(214 28% 64% / 0.36),
+      0 1px 2px hsl(214 26% 28% / 0.1);
+  }
+
+  :root[data-theme='bright'] .app-navbar .app-navbar-select-trigger:hover {
+    border-color: hsl(214 34% 40% / 0.96);
+  }
+
+  :root[data-theme='bright'] .app-navbar .app-navbar-select-trigger:focus-visible {
+    border-color: hsl(214 38% 36% / 0.98);
+    box-shadow:
+      inset 0 0 0 1px hsl(214 30% 58% / 0.4),
+      0 0 0 1px hsl(214 38% 36% / 0.26);
+  }
+
+  :root[data-theme='bright'] .app-navbar-select-content {
+    border-color: hsl(214 24% 54% / 0.78);
+  }
+
+  :root[data-theme='bright'] .app-chat-shell {
+    background-image: linear-gradient(180deg, hsl(211 28% 95%) 0%, hsl(211 24% 92%) 100%);
+    box-shadow: 0 20px 56px hsl(213 28% 44% / 0.18);
+  }
+
+  :root[data-theme='bright'] .app-panel-shell {
+    background-color: hsl(210 26% 94% / 0.84);
+    box-shadow: 0 12px 40px hsl(213 22% 43% / 0.14);
+  }
+
+  :root[data-theme='bright'] .app-command-menu {
+    background-color: hsl(210 25% 97% / 0.96);
+    box-shadow: 0 14px 44px hsl(213 24% 38% / 0.16);
+  }
+
+  :root[data-theme='bright'] .app-composer-shell {
+    background-color: hsl(210 24% 94% / 0.92);
+  }
+
+  :root[data-theme='bright'] .app-assistant-bubble {
+    box-shadow: 0 8px 24px hsl(213 20% 42% / 0.14);
+  }
+
+  :root[data-theme='bright'] .crt-shell::before {
+    background:
+      linear-gradient(
+        180deg,
+        transparent 0%,
+        hsl(210 34% 82% / 0.05) 50%,
+        transparent 100%
+      );
+  }
+
+  :root[data-theme='bright'] .crt-shell::after {
+    box-shadow:
+      inset 0 0 55px hsl(209 40% 90% / 0.18),
+      inset 0 0 120px hsl(210 26% 85% / 0.24);
   }
 }

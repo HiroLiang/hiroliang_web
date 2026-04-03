@@ -4,6 +4,7 @@ export const enMessages: MessageDictionary = {
   localeLabel: 'Language',
   locales: {
     en: 'English',
+    ja: '日本語',
     'zh-TW': '繁體中文',
   },
   nav: {
@@ -11,6 +12,12 @@ export const enMessages: MessageDictionary = {
     home: 'Home',
     language: 'Language',
     project: 'Project',
+    theme: 'Theme',
+  },
+  themeModes: {
+    auto: 'Auto',
+    bright: 'Bright',
+    dark: 'Dark',
   },
   home: {
     chat: {
@@ -22,11 +29,21 @@ export const enMessages: MessageDictionary = {
       unknownCommand: 'Unknown command. Try /profile, /github, /projects, /games, /note, or /clean.',
     },
     experience: {
-      body1:
-        'As AI continues to evolve, I do not fully agree with the idea that it will simply eliminate junior roles. What feels closer to reality is that the nature of work itself is being redefined. Just as automation replaced traditional craftsmanship, junior engineers are no longer only learning how to build, but are also expected much earlier to operate systems, tune parameters, understand why failures happen, and handle basic maintenance and optimization. In many ways, this means earlier exposure to abilities that used to belong more clearly to senior roles; meanwhile, purely manual skills that do not interact with systems will have less and less space in scalable environments.',
-      body2:
-        'AI makes many capabilities that once took years to accumulate much more accessible. The gap in information and technical skill is shrinking, but that does not make competition easier; if anything, it raises the bar. The real differentiator is shifting toward the ability to understand problems across domains, to use AI as a tool rather than a crutch, and to build workable solutions in unfamiliar areas. A single language, or a single narrowly defined role, no longer feels like a durable advantage. What I am intentionally developing instead is cross-domain understanding, extending beyond software engineering itself into system and platform design, user experience, product thinking, and even design, content, business, and market awareness. The goal is not to master everything, but to quickly understand, adapt, and build something usable when needed.',
       eyebrow: 'Notes',
+      notes: [
+        {
+          body: 'If we cannot use imagination to sense what life could be, it suggests a gap between the world we live in and reality.',
+          date: '2026 / 04 / 03',
+        },
+        {
+          body: 'As AI continues to evolve, I do not fully agree with the idea that it will simply eliminate junior roles. What feels closer to reality is that the nature of work itself is being redefined. Just as automation replaced traditional craftsmanship, junior engineers are no longer only learning how to build, but are also expected much earlier to operate systems, tune parameters, understand why failures happen, and handle basic maintenance and optimization. In many ways, this means earlier exposure to abilities that used to belong more clearly to senior roles; meanwhile, purely manual skills that do not interact with systems will have less and less space in scalable environments.',
+          date: '2026 / 02 / 05',
+        },
+        {
+          body: 'AI makes many capabilities that once took years to accumulate much more accessible. The gap in information and technical skill is shrinking, but that does not make competition easier; if anything, it raises the bar. The real differentiator is shifting toward the ability to understand problems across domains, to use AI as a tool rather than a crutch, and to build workable solutions in unfamiliar areas. A single language, or a single narrowly defined role, no longer feels like a durable advantage. What I am intentionally developing instead is cross-domain understanding, extending beyond software engineering itself into system and platform design, user experience, product thinking, and even design, content, business, and market awareness. The goal is not to master everything, but to quickly understand, adapt, and build something usable when needed.',
+          date: '2026 / 02 / 05',
+        },
+      ],
       title: 'Thoughts Beyond Building Systems',
     },
     featured: {

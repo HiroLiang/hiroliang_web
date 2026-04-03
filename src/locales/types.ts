@@ -1,4 +1,9 @@
-export type Locale = 'en' | 'zh-TW'
+export type Locale = 'en' | 'zh-TW' | 'ja'
+
+export type ExperienceNote = {
+  body: string
+  date: string
+}
 
 export type MessageDictionary = {
   localeLabel: string
@@ -8,7 +13,9 @@ export type MessageDictionary = {
     home: string
     language: string
     project: string
+    theme: string
   }
+  themeModes: Record<'dark' | 'bright' | 'auto', string>
   home: {
     chat: {
       errorFallback: string
@@ -19,9 +26,8 @@ export type MessageDictionary = {
       unknownCommand: string
     }
     experience: {
-      body1: string
-      body2: string
       eyebrow: string
+      notes: ExperienceNote[]
       title: string
     }
     featured: {
